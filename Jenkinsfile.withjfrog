@@ -6,7 +6,7 @@ node {
     checkout scm
   }
   stage('setup env'){
-          myGradleContainer.inside(' -u 0') {
+     myGradleContainer.inside(' -u 0') {
        sh 'apk add bash'
   }
   stage('build') {
