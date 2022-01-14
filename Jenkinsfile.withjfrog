@@ -7,13 +7,13 @@ node {
   }
   stage('build') {
      myGradleContainer.inside("-v ${env.HOME}/.gradle:/home/gradle/.gradle -u 0") {
-       sh 'chmod +x ./complete/gradle'
+       sh 'chmod +x ./complete/gradle && apk add bash'
        sh 'cd complete && ./gradlew build'
      }
   }
   stage('test') {
      myGradleContainer.inside("-v ${env.HOME}/.gradle:/home/gradle/.gradle -u 0") {
-       sh 'chmod +x ./complete/gradle'
+       sh 'chmod +x ./complete/gradle && apk add bash'
        sh 'cd complete && ./gradlew test'
      }
   }
