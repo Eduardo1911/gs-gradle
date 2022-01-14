@@ -8,6 +8,7 @@ node {
   stage('setup env'){
      myGradleContainer.inside(' -u 0') {
        sh 'apk add bash'
+     }
   }
   stage('build') {
      myGradleContainer.inside("-v ${env.HOME}/.gradle:/home/gradle/.gradle") {
