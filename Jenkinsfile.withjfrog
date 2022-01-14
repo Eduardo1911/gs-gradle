@@ -6,16 +6,13 @@ node {
     checkout scm
   }
   stage('build') {
-     myGradleContainer.inside(' -u 0') {
-       sh 'apk add bash'
-     }
      myGradleContainer.inside("-v ${env.HOME}/.gradle:/home/gradle/.gradle") {
-       sh 'cd complete && ./gradlew -g gradle-user-home build'
+       sh 'cd complete && ./gradle build'
      }
   }
   stage('test') {
      myGradleContainer.inside("-v ${env.HOME}/.gradle:/home/gradle/.gradle") {
-       sh 'cd complete && ./gradlew -g gradle-user-home test'
+       sh 'cd complete && ./gradle test'
      }
   }
   stage('publish') {
